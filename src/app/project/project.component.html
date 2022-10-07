@@ -50,9 +50,7 @@
   </div>
 </div>
 
-<p *ngIf="selectedProject">
-  {{ selectedProject.code }} - {{ selectedProject.name }}
-</p>
+<app-project-detail [project]="selectedProject"></app-project-detail>
 
 <hr />
 <form #f="ngForm" (ngSubmit)="submitProjectForm(f)">
