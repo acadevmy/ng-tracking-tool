@@ -5,12 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { ProjectComponent } from './project/project.component';
+import { ProjectFormComponent } from './project-form/project-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    ProjectFormComponent
   ],
   imports: [
     BrowserModule,
