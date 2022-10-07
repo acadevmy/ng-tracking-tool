@@ -7,6 +7,8 @@ import { Project } from '../models/project';
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit {
+  selectedProject: Project | undefined;
+
   projects: Project[] = [
     {
       id: 1,
@@ -47,4 +49,7 @@ export class ProjectComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectProject(project: Project): void {
+    this.selectedProject = project;
+  }
 }
