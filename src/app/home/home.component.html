@@ -1,9 +1,1 @@
-<div class="row mt-5 justify-content-end">
-  <div class="col">
-    <h2 class="">Benvenuto in {{ title }}!</h2>
-  </div>
-  <div class="col-auto text-right">
-    <button class="btn btn-primary" routerLink="/projects">Vai ai Progetti</button>
-  </div>
-</div>
-<hr />
+<app-section-header [title]="title" [button]="{ label: 'Vai a progetti', link: '/projects', type: 'btn-primary' }"></app-section-header>
