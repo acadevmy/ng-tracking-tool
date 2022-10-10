@@ -3,11 +3,11 @@ import { Project } from '../models/project';
 import { SearchProject } from '../models/search-project';
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.css']
+  selector: 'app-project-container',
+  templateUrl: './project-container.component.html',
+  styleUrls: ['./project-container.component.css']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectContainerComponent implements OnInit {
   selectedProject: Project | undefined;
   searchedProject!: SearchProject;
 
