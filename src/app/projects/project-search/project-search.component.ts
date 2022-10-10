@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, ViewChild, EventEmitter, ElementRef } from '@angular/core';
-import { SearchProject } from '../models/search-project';
-import { Priority } from '../models/project';
+import { SearchProject } from '../../models/search-project';
+import { Priority } from '../../models/project';
 
 @Component({
   selector: 'app-project-search',

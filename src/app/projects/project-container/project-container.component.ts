@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from '../models/project';
-import { SearchProject } from '../models/search-project';
+import { Project } from '../../models/project';
+import { SearchProject } from '../../models/search-project';
 
 @Component({
   selector: 'app-project-container',
