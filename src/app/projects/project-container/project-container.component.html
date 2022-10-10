@@ -1,4 +1,6 @@
 <app-section-header title="I miei progetti" [button]="{ label: 'Torna alla Home', link: '/', type: 'btn-primary' }"></app-section-header>
+<app-project-search (searching)="searchProject($event)"></app-project-search>
+<hr/>
 
 <app-project-list *ngIf="projects.length > 0 ; else noProjects" class="col" [projects]="projects
         | searchFilter: 'name' : searchedProject?.name || ''
