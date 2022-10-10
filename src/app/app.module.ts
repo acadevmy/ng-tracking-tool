@@ -11,6 +11,7 @@ import { ProjectSearchComponent } from './projects/project-search/project-search
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
     ProjectListComponent,
     ProjectSearchComponent,
     ProjectDetailComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
