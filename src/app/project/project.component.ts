@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../models/project';
+import { SearchProject } from '../models/search-project';
 
 @Component({
   selector: 'app-project',
@@ -8,6 +9,7 @@ import { Project } from '../models/project';
 })
 export class ProjectComponent implements OnInit {
   selectedProject: Project | undefined;
+  searchedProject!: SearchProject;
 
   projects: Project[] = [
     {
@@ -55,5 +57,9 @@ export class ProjectComponent implements OnInit {
 
   addNewProject(project: Project): void {
     this.projects = [project, ...this.projects];
+  }
+
+  searchProject(searchedProject: SearchProject): void {
+    this.searchedProject = searchedProject;
   }
 }
