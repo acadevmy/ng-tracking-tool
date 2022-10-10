@@ -1,7 +1,10 @@
-<div>
-  <h2>I miei progetti</h2>
-  <hr />
-  <app-project-search (searching)="searchProject($event)"></app-project-search>
+<div class="row mt-5 justify-content-end">
+  <div class="col">
+    <h2 class="">I miei progetti</h2>
+  </div>
+  <div class="col-auto text-right">
+    <button class="btn btn-primary" routerLink="/">Torna ad Home</button>
+  </div>
 </div>
 <hr />
 
@@ -10,8 +13,6 @@
         | searchFilter: 'priority' : searchedProject?.priority || ''
         | searchFilter: 'done' : searchedProject?.done?.toString() || ''" (selected)="selectProject($event)">
 </app-project-list>
-
-<app-project-detail [project]="selectedProject"></app-project-detail>
 <hr />
 <app-project-form [nextId]="projects.length" (submitted)="addNewProject($event)">
 </app-project-form>
