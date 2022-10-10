@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Project } from '../../models/project';
 import { SearchProject } from '../../models/search-project';
 import { ProjectService } from '../project.service';
@@ -8,7 +9,8 @@ import { ProjectService } from '../project.service';
   templateUrl: './project-container.component.html',
   styleUrls: ['./project-container.component.css']
 })
-export class ProjectContainerComponent implements OnInit {
+export class ProjectContainerComponent implements OnInit, OnDestroy {
+  projectsSub!: Subscription;
   selectedProject: Project | undefined;
   searchedProject!: SearchProject;
   projects: Project[] = [];
@@ -16,7 +18,11 @@ export class ProjectContainerComponent implements OnInit {
   constructor(private projectService: ProjectService) { }
 
   ngOnInit(): void {
-    this.projects = this.projectService.getAll();
+    this.projectsSub = this.projectService.getAll().subscribe(data => this.projects = data);
+  }
+
+  ngOnDestroy(): void {
+    this.projectsSub.unsubscribe();
   }
 
   selectProject(project: Project): void {
@@ -24,7 +30,7 @@ export class ProjectContainerComponent implements OnInit {
   }
 
   addNewProject(project: Project): void {
-    this.projects = this.projectService.add(project);
+    this.projectService.add(project);
   }
 
   searchProject(searchedProject: SearchProject): void {

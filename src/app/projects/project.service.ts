@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Project } from '../models/project';
 
 @Injectable({
@@ -40,16 +41,18 @@ export class ProjectService {
     },
   ];
 
+  private projectsSubject = new BehaviorSubject<Project[]>(this.projects);
+  projects$ = this.projectsSubject.asObservable();
+
   constructor() { }
 
-  getAll(): Project[] {
-    return this.projects;
+  getAll(): Observable<Project[]> {
+    return this.projects$;
   }
 
-  add(project: Project): Project[] {
+  add(project: Project): void {
     this.projects = [project, ...this.projects];
-
-    return this.projects;
+    this.projectsSubject.next(this.projects);
   }
 
   get(id: number): Project | undefined {
