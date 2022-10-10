@@ -5,29 +5,11 @@
 </div>
 <hr />
 
-<div *ngIf="projects.length > 0 ; else noProjects" class="row row-cols-2 g-4">
-  <div *ngFor="let project of projects
-        | searchFilter: 'name' : searchedProject?.name?.toString() || ''
-        | searchFilter: 'priority' : searchedProject?.priority?.toString() || ''
-        | searchFilter: 'done' : searchedProject?.done?.toString() || ''" class="col">
-    <div class="card w-75" [ngClass]="{'border-success': project.done, 'border-warning': !project.done }">
-      <div class="card-body">
-        <h5 class="card-title">
-          <span class="badge bg-secondary float-end">{{ project.code }}</span>
-          {{ project.name }}
-        </h5>
-        <h6 class="card-subtitle mb-2 text-muted">
-          <small>{{ project.start | date: 'dd/MM/yyyy' }}</small>
-          <small *ngIf="project.end"> - {{ project.end | date: 'dd/MM/yyyy' }}</small>
-        </h6>
-        <p class="card-text">{{ project.description }}</p>
-        <a href="#" class="btn btn-primary btn-sm" (click)="selectProject(project)">
-          Vai al Progetto
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+<app-project-list *ngIf="projects.length > 0 ; else noProjects" class="col" [projects]="projects
+        | searchFilter: 'name' : searchedProject?.name || ''
+        | searchFilter: 'priority' : searchedProject?.priority || ''
+        | searchFilter: 'done' : searchedProject?.done?.toString() || ''" (selected)="selectProject($event)">
+</app-project-list>
 
 <app-project-detail [project]="selectedProject"></app-project-detail>
 <hr />
