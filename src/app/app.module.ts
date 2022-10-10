@@ -10,6 +10,7 @@ import { ProjectListComponent } from './projects/project-list/project-list.compo
 import { ProjectSearchComponent } from './projects/project-search/project-search.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
