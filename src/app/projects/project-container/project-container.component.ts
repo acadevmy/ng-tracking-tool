@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Project } from '../../models/project';
 import { SearchProject } from '../../models/search-project';
 import { ProjectService } from '../project.service';
@@ -12,13 +13,16 @@ export class ProjectContainerComponent implements OnInit {
   selectedProject: Project | undefined;
   searchedProject!: SearchProject;
 
-  constructor(public projectService: ProjectService) { }
+  constructor(
+    public projectService: ProjectService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   selectProject(project: Project): void {
-    this.selectedProject = this.projectService.get(project.id);
+    this.router.navigateByUrl(`/projects/detail/${project.id}`);
   }
 
   addNewProject(project: Project): void {

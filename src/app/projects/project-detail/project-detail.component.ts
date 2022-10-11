@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
 import { Project } from '../../models/project';
+import { ProjectService } from '../project.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -7,11 +10,20 @@ import { Project } from '../../models/project';
   styleUrls: ['./project-detail.component.css']
 })
 export class ProjectDetailComponent implements OnInit {
-  @Input() project: Project | undefined;
+  project$!: Observable<Project | undefined>;
 
-  constructor() { }
+  constructor(
+    private projectService: ProjectService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-  }
+    this.project$ = this.route.paramMap.pipe(
+      switchMap((params) => {
+        const projectId = +(params.get('id') || 0);
 
+        return this.projectService.get(projectId);
+      })
+    );
+  }
 }
