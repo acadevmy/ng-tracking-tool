@@ -1,6 +1,7 @@
-<app-section-header title="I miei progetti" [button]="{ label: 'Torna alla Home', link: '/', type: 'btn-primary' }">
-</app-section-header>
+<app-section-header title="I miei progetti" [button]="{ label: 'Torna alla Home', link: '/', type: 'btn-primary' }"></app-section-header>
 <app-project-search (searching)="searchProject($event)"></app-project-search>
+<hr />
+<app-project-form [quickMode]="true" (submitted)="addNewProject($event)"></app-project-form>
 <hr />
 
 <ng-container *ngIf="(projectService.getAll() | async) as projects">
@@ -9,9 +10,6 @@
         | searchFilter: 'priority' : searchedProject?.priority || ''
         | searchFilter: 'done' : searchedProject?.done?.toString() || ''" (selected)="selectProject($event)">
   </app-project-list>
-  <hr />
-  <app-project-form [quickMode]="true" (submitted)="addNewProject($event)">
-  </app-project-form>
 </ng-container>
 
 <ng-template #noProjects>
