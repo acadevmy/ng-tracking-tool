@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
+import { HomeComponent } from "./layouts/home/home.component";
 import { ProjectContainerComponent } from "./projects/project-container/project-container.component";
 import { ProjectDetailComponent } from "./projects/project-detail/project-detail.component";
 
