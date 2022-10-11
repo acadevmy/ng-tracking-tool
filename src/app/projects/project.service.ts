@@ -50,14 +50,19 @@ export class ProjectService {
     return this.projects$;
   }
 
+  get(id: number): Observable<Project | undefined> {
+    return this.projects$.pipe(
+      map((projects) => projects.find(project => project.id === id))
+    );
+  }
+
   add(project: Project): void {
     this.projects = [{ ...project, id: this.projects.length + 1 }, ...this.projects];
     this.projectsSubject.next(this.projects);
   }
 
-  get(id: number): Observable<Project | undefined> {
-    return this.projects$.pipe(
-      map((projects) => projects.find(project => project.id === id))
-    );
+  update(project: Project): void {
+    this.projects = this.projects.map(item => item.id === project.id ? { ...item, ...project } : item);
+    this.projectsSubject.next([ ...this.projects ]);
   }
 }

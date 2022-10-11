@@ -11,6 +11,7 @@ import { ProjectService } from '../project.service';
 })
 export class ProjectDetailComponent implements OnInit {
   project$!: Observable<Project | undefined>;
+  editMode = false;
 
   constructor(
     private projectService: ProjectService,
@@ -25,5 +26,14 @@ export class ProjectDetailComponent implements OnInit {
         return this.projectService.get(projectId);
       })
     );
+  }
+
+  changeEditMode(): void {
+    this.editMode = !this.editMode;
+  }
+
+  updateProject(project: Project): void {
+    this.projectService.update(project);
+    this.changeEditMode();
   }
 }
