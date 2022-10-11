@@ -23,7 +23,6 @@ export class ProjectFormComponent implements OnInit {
     const { start, end, ...data } = form.value;
 
     this.submitted.emit({
-      id: 0,
       code: Math.random().toString(36).replace('0.', '').substring(2, 9),
       start: new Date(start),
       done: false,
