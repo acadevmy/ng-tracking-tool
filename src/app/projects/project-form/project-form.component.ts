@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Project } from '../../models/project';
 
@@ -8,6 +8,10 @@ import { Project } from '../../models/project';
   styleUrls: ['./project-form.component.css']
 })
 export class ProjectFormComponent implements OnInit {
+  @Input() project: Partial<Project> = {};
+  @Input() buttonLabel = 'Crea Progetto';
+  @Input() quickMode = false;
+
   @Output() submitted = new EventEmitter<Project>();
 
   constructor() { }
