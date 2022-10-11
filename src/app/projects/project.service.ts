@@ -51,7 +51,7 @@ export class ProjectService {
   }
 
   add(project: Project): void {
-    this.projects = [project, ...this.projects];
+    this.projects = [{ ...project, id: this.projects.length + 1 }, ...this.projects];
     this.projectsSubject.next(this.projects);
   }
 

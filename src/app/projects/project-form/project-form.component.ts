@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Project } from '../../models/project';
 
@@ -8,7 +8,6 @@ import { Project } from '../../models/project';
   styleUrls: ['./project-form.component.css']
 })
 export class ProjectFormComponent implements OnInit {
-  @Input() nextId!: number;
   @Output() submitted = new EventEmitter<Project>();
 
   constructor() { }
@@ -18,7 +17,7 @@ export class ProjectFormComponent implements OnInit {
 
   submitProjectForm(form: NgForm): void {
     this.submitted.emit({
-      id: this.nextId,
+      id: 0,
       code: Math.random().toString(36).replace('0.', '').substring(2, 9),
       done: false,
       tasks: [],

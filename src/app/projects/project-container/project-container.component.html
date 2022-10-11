@@ -10,7 +10,7 @@
         | searchFilter: 'done' : searchedProject?.done?.toString() || ''" (selected)="selectProject($event)">
   </app-project-list>
   <hr />
-  <app-project-form [nextId]="projects.length" (submitted)="addNewProject($event)">
+  <app-project-form (submitted)="addNewProject($event)">
   </app-project-form>
 </ng-container>
 
