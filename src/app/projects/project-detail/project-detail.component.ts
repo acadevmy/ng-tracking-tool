@@ -33,7 +33,7 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   updateProject(project: Project): void {
-    this.projectService.update(project);
+    this.projectService.update(project).subscribe();
     this.changeEditMode();
   }
 }

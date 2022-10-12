@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, tap } from 'rxjs';
 import { Project } from '../../models/project';
 import { SearchProject } from '../../models/search-project';
 import { ProjectService } from '../project.service';
@@ -10,6 +11,7 @@ import { ProjectService } from '../project.service';
   styleUrls: ['./project-container.component.css']
 })
 export class ProjectContainerComponent implements OnInit {
+  projects$!: Observable<Project[]>;
   selectedProject: Project | undefined;
   searchedProject!: SearchProject;
 
@@ -19,6 +21,7 @@ export class ProjectContainerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.projects$ = this.projectService.getAll();
   }
 
   selectProject(project: Project): void {
@@ -26,7 +29,9 @@ export class ProjectContainerComponent implements OnInit {
   }
 
   addNewProject(project: Project): void {
-    this.projectService.add(project);
+    this.projectService.add(project).pipe(
+      tap(() => this.projects$ = this.projectService.getAll())
+    ).subscribe();
   }
 
   searchProject(searchedProject: SearchProject): void {
